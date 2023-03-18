@@ -29,5 +29,5 @@ model.objective=Objective(rule=objective_rule)
 
 opt=SolverFactory("gurobi")
 opt.solve(model)
-print("目标函数为{}".format(value(model.objective)))
+print("the obj is{}".format(value(model.objective)))
 model.x.display()
