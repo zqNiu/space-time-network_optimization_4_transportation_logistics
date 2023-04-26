@@ -5,7 +5,7 @@ import copy
 import logging
 
 logging.getLogger('pyomo').setLevel(logging.INFO)
-#指定求解器
+#choose a solver
 opt = pyo.SolverFactory('ipopt')
 model = pyo.ConcreteModel()
 
@@ -136,7 +136,7 @@ for j in model.J:
             s_dict[(j,u)]=1
 model.s=s_dict
 
-#定义变量
+#define variables
 #binary variable that indicates if there is a train j_p which has the same couple_stop pattern as train j
 model.B=pyo.Var(model.U,model.V,model.J,model.j_p,domain=pyo.Binary)
 #binary variable that indicates if a train departure time at station u belongs to a spefific period k
@@ -165,7 +165,7 @@ model.tmp_bin=pyo.Var(model.U,model.V,model.J,model.J)
 # model.tmp_u=pyo.Var(model.U,model.V,model.J)
 
 M=100000
-#定义约束
+#define constraints
 @model.Constraint(model.U,model.J,model.K)
 def Con_1_x(model,u,j,k):
     return 60*model.val_k[k-1]-model.TD[u,j]<=M*(1-model.x[u,j,k])
