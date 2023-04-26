@@ -1,7 +1,7 @@
 import pyomo.environ as pyo
 from pyomo.opt import SolverFactory
 
-#指定求解器
+#choose a solver
 opt = pyo.SolverFactory('ipopt')
 model = pyo.ConcreteModel()
 
