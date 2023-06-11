@@ -1,6 +1,6 @@
 import pyomo.environ as pyo
 
-#指定求解器
+#select a solver
 opt = pyo.SolverFactory('cbc')
 model = pyo.ConcreteModel()
 
